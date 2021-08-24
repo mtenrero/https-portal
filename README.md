@@ -20,7 +20,7 @@ automatically.
 FORKED FROM:
 
 Docker Hub page:
-[https://hub.docker.com/r/steveltn/https-portal/](https://hub.docker.com/r/steveltn/https-portal/)
+[https://hub.docker.com/r/tenrero/https-tls-testtool/](https://hub.docker.com/r/tenrero/https-tls-testtool/)
 
 ## Table of Contents
 
@@ -78,7 +78,7 @@ version: '3'
 
 services:
   https-portal:
-    image: steveltn/https-portal:1
+    image: tenrero/https-tls-testtool
     ports:
       - '80:80'
       - '443:443'
@@ -105,7 +105,7 @@ directory:
 version: '3'
 
 https-portal:
-  image: steveltn/https-portal:1
+  image: tenrero/https-tls-testtool 
   ports:
     - '80:80'
     - '443:443'
@@ -630,7 +630,7 @@ https-portal:
     - /path/to/https_config:/var/lib/nginx-conf/my.example.com.ssl.conf.erb:ro
 ```
 
-[This file](https://github.com/SteveLTN/https-portal/blob/master/fs_overlay/var/lib/nginx-conf/default.conf.erb) and [this file](https://github.com/SteveLTN/https-portal/blob/master/fs_overlay/var/lib/nginx-conf/default.ssl.conf.erb) are the default configuration files used by HTTPS-PORTAL.
+[This file](https://github.com/tenrero/https-tls-testtool/blob/master/fs_overlay/var/lib/nginx-conf/default.conf.erb) and [this file](https://github.com/tenrero/https-tls-testtool/blob/master/fs_overlay/var/lib/nginx-conf/default.ssl.conf.erb) are the default configuration files used by HTTPS-PORTAL.
 You can probably start by copying these files. You can either keep the variables or just hard-code the domain and upstream, etc.
 
 Another example can be found [here](/examples/custom_config).
