@@ -1,0 +1,14 @@
+https-portal:
+  image: tenrero/https-tls-testtool
+  ports:
+    - '80:80'
+    - '443:443'
+  environment:
+    DOMAINS: 'domain.com'
+    STAGE: 'local'
+    DEBUG: 'true'
+    ERROR_LOG: stdout
+    ACCESS_LOG: stderr  
+    CUSTOM_NGINX_SERVER_CONFIG_BLOCK: |
+      ssl_protocols     TLSv1.2;    
+    # STAGE: 'production' # Don't use production until staging works

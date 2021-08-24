@@ -1,5 +1,13 @@
 # HTTPS-PORTAL
 
+This Fork is intended for HTTP(s) / TLS / mTLS testing. It allows you to specify TLS protocols.
+
+It also has an extended logging configuration, which is very useful for debugging the connections received by the server
+
+```bash
+https-portal_1  | 172.240.0.1 - - [24/Aug/2021:19:53:21 +0000] "GET / HTTP/2.0" TLSv1.3/TLS_AES_256_GCM_SHA384 200 1033 "-" "curl/7.78.0" "-"
+```
+
 HTTPS-PORTAL is a fully automated HTTPS server powered by
 [Nginx](http://nginx.org), [Let's Encrypt](https://letsencrypt.org) and
 [Docker](https://www.docker.com). By using it, you can run any existing web
@@ -7,6 +15,9 @@ application over HTTPS, with only one extra line of configuration.
 
 The SSL certificates are obtained, and renewed from Let's Encrypt
 automatically.
+
+
+FORKED FROM:
 
 Docker Hub page:
 [https://hub.docker.com/r/steveltn/https-portal/](https://hub.docker.com/r/steveltn/https-portal/)
@@ -682,6 +693,10 @@ limit. That's why `STAGE` is `staging` by default, and thus we use the
 Let's Encrypt staging server. When you have finished your experiments and feel
 everything is good, you can switch to production mode with `STAGE:
 'production'`.
+
+### TLS Protocols
+
+Specify the environment variable `SSL_PROTOCOLS`. The default values are `TLSv1.2 TLSv1.3`
 
 ## Troubleshooting
 

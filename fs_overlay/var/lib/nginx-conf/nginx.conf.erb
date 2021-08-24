@@ -12,7 +12,12 @@ events {
 http {
     include       /etc/nginx/mime.types;
     default_type  application/octet-stream;
+
+    <% if !ENV['SSL_PROTOCOLS'] || ENV['SSL_PROTOCOLS'] = '' %>
     ssl_protocols TLSv1.2 TLSv1.3;
+    <% else %> 
+    ssl_protocols <%= ENV['SSL_PROTOCOLS'] %>;
+    <% end %>
 
     <% if ENV['ACCESS_LOG_INCLUDE_HOST'] == 'on' %>
     log_format  main  '$host:$server_port $remote_addr - $remote_user [$time_local] "$request" '
@@ -20,6 +25,7 @@ http {
                       '"$http_user_agent" "$http_x_forwarded_for"';
     <% else %> 
     log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$ssl_protocol/$ssl_cipher '
                       '$status $body_bytes_sent "$http_referer" '
                       '"$http_user_agent" "$http_x_forwarded_for"';
     <% end %>
